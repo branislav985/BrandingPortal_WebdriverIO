@@ -1,0 +1,25 @@
+novi tab -  await browser.createWindow('tab')
+            await browser.switchWindow('about:blank')
+swith na tab - await browser.navigateTo('https://webdriver.io')
+
+novi window - await browser.newWindow('https://webdriver.io')
+            const handles = await browser.getWindowHandles()
+            await browser.switchToWindow((await browser.getWindowHandles())[0])
+
+Autorizacija - await browser.url('https://qateam:Noowb1xFP@staging-branding.counterpath.com/', {
+             auth: {
+                user: 'branislav.andrejic@alianza.com',
+                pass: 'uFFnvfrsjgvp3kwlnnaM'
+                }
+            });
+
+Headers -    await browser.url('https://webdriver.io', {
+             headers: {
+            Authorization: 'Bearer XXXXX'
+            }
+        });
+
+process.env.pass = qapassword
+    - u .env generisati vrednost za qapassword
+    - instalirati dotenv
+    - inicijalizovati dotenv.config() 
