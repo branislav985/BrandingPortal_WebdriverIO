@@ -1,3 +1,0 @@
-{
-  "text": "bctest_admin@mailinator.com"
-}

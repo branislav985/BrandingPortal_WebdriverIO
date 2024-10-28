@@ -23,3 +23,6 @@ process.env.pass = qapassword
     - u .env generisati vrednost za qapassword
     - instalirati dotenv
     - inicijalizovati dotenv.config() 
+
+Instalirati del-cli kako bi skripta za brisanje testova mogla da radi
+   - npm install --global del-cli

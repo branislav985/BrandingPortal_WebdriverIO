@@ -9,12 +9,6 @@
     "chromedriver": "^104.0.0",
     "wdio-intercept-service": "^4.4.1"
   },
-  "scripts": {
-    "testQA": "wdio run ./wdio.conf.js",
-    "testPROD": "wdio run ./prod.conf.js",
-    "allure": "allure generate --clean allure-results && allure open",
-    "test_delete": "del-cli --force allure-results && del-cli --force allure-report && del-cli --force .tmp"
-  },
   "dependencies": {
     "@lukesthl/ts-axios-digest-auth": "^1.0.5",
     "@mhoc/axios-digest-auth": "^0.8.0",
@@ -26,5 +20,11 @@
     "BP_W_C": "file:",
     "dotenv": "^16.4.5",
     "tough-cookie": "^4.1.4"
+  },
+  "scripts": {
+    "testQA": "wdio run ./wdio.conf.js",
+    "testPROD": "wdio run ./prod.conf.js",
+    "allure": "allure generate --clean allure-results && allure open",
+    "test_delete": "del-cli --force allure-results && del-cli --force allure-report"
   }
 }
