@@ -52,7 +52,7 @@ Feature: login to BP
     When I enter password for temporarly lock out
     When I click on Login button
     Then Incorrect login <message2> is shown
-    # Then Call API to unlock the user
+    Then Call API to unlock the user
     
 
     Examples:

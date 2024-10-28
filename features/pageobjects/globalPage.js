@@ -100,7 +100,7 @@ export default class Global {
             withCredentials: true
         }, {
             headers: {
-                Cookie: `session=${session[0].value}`,
+                Cookie: `session=${session[0].value}`
             }
         }).then(response => {
             console.log(response.data)
