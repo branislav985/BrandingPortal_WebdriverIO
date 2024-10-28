@@ -82,10 +82,8 @@ Then(/^Temporarly locked out message (.*) and (.*) is shown$/, async (message1, 
 Then(/^Call API to unlock the user$/, async() => {
     await global.populateInputField(loginS.EMAIL_INPUT, process.env.user)
     await global.populateInputField(loginS.PASSWORD_INPUT, process.env.pass)
-    
     await global.clickOnButton(loginS.LOGIN_BUTTON)
-    // await browser.debug()
-    await browser.pause(1000)
+    await browser.pause(400)
     await global.callResetAPI()
 })
 
