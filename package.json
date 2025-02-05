@@ -7,9 +7,11 @@
     "@wdio/cucumber-framework": "^9.0.8",
     "@wdio/local-runner": "^9.0.9",
     "chromedriver": "^104.0.0",
+    "wdio-cucumberjs-json-reporter": "^6.0.1",
     "wdio-intercept-service": "^4.4.1"
   },
   "dependencies": {
+    "@avst-api/zephyr-scale-cloud": "^0.3.0",
     "@lukesthl/ts-axios-digest-auth": "^1.0.5",
     "@mhoc/axios-digest-auth": "^0.8.0",
     "@mreal/digest-auth": "^2.0.0",

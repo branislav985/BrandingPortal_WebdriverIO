@@ -7,6 +7,7 @@ import axios from 'axios'
 
 
 
+
 dotenv.config();
 const loginS = new LoginPageSelectors()
 const global = new Global();
@@ -62,7 +63,11 @@ When(/^I enter (.*) password$/, async (pass) => {
 
 Then(/^Under email input field (.*) is shown$/, async (messageText) => {
     await expect(loginS.ERROR_EMAIL_LOGIN_MESSAGE).toHaveText(messageText)
-    
+})
+
+Then(/^Under email and password input fields is (.*) message$/, async (messageText) => {
+    await expect(loginS.ERROR_EMAIL_LOGIN_MESSAGE).toHaveText(messageText)
+    await expect(loginS.ERROR_PASSWORD_LOGIN_mESSAGE).toHaveText(messageText)
 })
 
 Then(/^Under password input field (.*) is shown$/, async (messageText) => {

@@ -1,4 +1,4 @@
-
+import axios from 'axios'
 process.env.user= process.env.USERNAME_FULL;
 process.env.pass= process.env.PASSWORD;
 
@@ -131,7 +131,16 @@ export const config = {
     // Test reporter for stdout.
     // The only one supported by default is 'dot'
     // see also: https://webdriver.io/docs/dot-reporter
-    reporters: [['allure', {outputDir: 'allure-results'}]],
+    reporters: [
+        ['allure', {outputDir: 'allure-results'}], 
+        ['cucumberjs-json',
+
+        // OR like this if you want to set the folder and the language
+        [ 'cucumberjs-json', {
+                jsonFolder: '.tmp/new/',
+                language: 'en',
+            },
+        ],]],
 
     // If you are using Cucumber you need to specify the location of your step definitions.
     cucumberOpts: {
@@ -273,6 +282,18 @@ export const config = {
      * @param {object}                 context          Cucumber World object
      */
     // afterScenario: function (world, result, context) {
+
+    //     console.log("AFTEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEERRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR SC")
+
+    //     axios.post('https://api.zephyrscale.smartbear.com/v2/testcases/BMP-T192', {
+    //         withCredentials: true
+    //     }, {
+    //         headers: {
+    //             Aurhorization: "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJjb250ZXh0Ijp7ImJhc2VVcmwiOiJodHRwczovL2FsaWFuemEuYXRsYXNzaWFuLm5ldCIsInVzZXIiOnsiYWNjb3VudElkIjoiNzEyMDIwOjYyNTY0YWJhLTkzMTMtNGU5Mi04NWY1LWIyNzBkZDg5ZGE2YyIsInRva2VuSWQiOiJkODhjNzYzYS03YmRmLTRjM2YtOWE3Mi02NTk1ZWNmMWQwNGUifX0sImlzcyI6ImNvbS5rYW5vYWgudGVzdC1tYW5hZ2VyIiwic3ViIjoiYWxpYW56YS5hdGxhc3NpYW4ubmV0IiwiZXhwIjoxNzcwMTMzOTMwLCJpYXQiOjE3Mzg1OTc5MzB9.oeS32EQc5AdjqbH_r2ervr1jVQPKIWRXxSDLPkwupxc"
+    //         }
+    //     }).then(response => {
+    //         console.log(response.data)
+    //     })
     // },
     /**
      *
