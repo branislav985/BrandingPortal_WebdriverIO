@@ -1,4 +1,4 @@
-import report from './.tmp/json/login-to-bp_17387684499738591.json' assert {type: 'json'};
+import report from './.tmp/json/login-to-bp_17388424558327053.json' assert {type: 'json'};
 import axios from 'axios'
 
 
@@ -10,8 +10,8 @@ var tCase = 0
 
 var statusName
 var projectKey = "BMP"
-var testCaseKey = "BMP-T192"
-var testCycleKey = "BMP-R2"
+var testCaseKey
+var testCycleKey
 var testScriptResults = []
 
 var executionBody = {
@@ -34,8 +34,14 @@ rep.forEach(function (item) {
 do {
     console.log("TCase = " + (tCase + 1))
     allStatusesOfSteps = []
-
+    testScriptResults = []
     rep.forEach(function (item) {
+
+        //Generate Test Cycle key
+        testCycleKey = (item.elements[tCase].tags[0].name).slice(1)
+
+        //Generate Testcase key
+        testCaseKey = (item.elements[tCase].tags[1].name).slice(1)
 
         //Generate steps for each testcase
         item.elements[tCase].steps.forEach(function (results) {
@@ -43,24 +49,28 @@ do {
         })
 
         //Werify every step status and generate top status
-        testScriptResults = []
         //To avoid Before and After steps from JSON report - i=1; i<allStatusesOfSteps.length - 1
         for (let i = 1; i < allStatusesOfSteps.length - 1; i++) {
-            if (allStatusesOfSteps[i] == "passed") {
-                statusName = "Pass"
-                testScriptResults.push({ statusName: "Pass" })
-            } else {
-                statusName = "Fail"
-                testScriptResults.push({ statusName: "Fail" })
-                break;
+            switch (allStatusesOfSteps[i]) {
+                case "passed":
+                    statusName = "Pass"
+                    testScriptResults.push({ statusName: "Pass" });
+                    break;
+                case "failed":
+                    statusName = "Fail"
+                    testScriptResults.push({ statusName: "Fail" });
+                    break;
+                default:
+                    testScriptResults.push({ statusName: "Not Executed" })
+                    break;
             }
         }
         console.log("Step status " + JSON.stringify(testScriptResults))
         executionBody.testScriptResults = testScriptResults
         // executionBody.projectKey = projectKey
         executionBody.statusName = statusName
-        // executionBody.testCaseKey = testCaseKey
-        // executionBody.testCycleKey = testCycleKey
+        executionBody.testCaseKey = testCaseKey
+        executionBody.testCycleKey = testCycleKey
         console.log("API " + JSON.stringify(executionBody))
 
         axios({
@@ -71,7 +81,7 @@ do {
                 executionBody
         });
     })
-    console.log("Steps = " + allStatusesOfSteps.length)
-    console.log("TOP " + statusName + '\n')
+    console.log("Steps = " + (allStatusesOfSteps.length - 2))
+    console.log("TOP Status " + statusName + '\n')
     tCase++
 } while (tCase < numberOfTestCases)
