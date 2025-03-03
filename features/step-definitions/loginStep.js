@@ -38,9 +38,9 @@ When(/^I click on Login button$/, async () => {
     // await browser.pause(200)
 })
 
-Then(/^I am on Dashboard and verify title and URL$/, async () => {
-    await expect(browser).toHaveUrl('https://staging-branding.counterpath.com/')
-    await expect(loginS.TITLE).toHaveText('Dashboard')
+Then(/^I am on Dashboard with title (.*) and URL (.*)$/, async (title, url) => {
+    await global.elementHasText(loginS.TITLE, title)
+    await global.urlHasText(url)
 })
 
 Then(/^I get the session cookie$/, async() => {
@@ -79,7 +79,7 @@ Then(/^Incorrect login (.*) is shown$/, async (messageText) => {
 })
 
 Then(/^Temporarly locked out message (.*) and (.*) is shown$/, async (message1, message2) => {
-    console.log(loginS.ERROR_LOGIN_MESSAGE.getText())
+    // console.log(loginS.ERROR_LOGIN_MESSAGE.getText())
     await expect(loginS.TEMPORARLY_LOCKED_OUT_LOGIN_MESSAGE_1).toHaveText(message1)
     await expect(loginS.TEMPORARLY_LOCKED_OUT_LOGIN_MESSAGE_2).toHaveText(message2)
 })

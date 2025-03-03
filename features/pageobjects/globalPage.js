@@ -48,6 +48,16 @@ export default class Global {
         await expect(element).toHaveText(text)
     }
 
+    async elementHasText(element, text) {
+        const textElement = await element.getText()
+        await expect(text).toEqual(textElement)
+    }
+
+    async urlHasText(url) {
+        const urlText = await browser.getUrl()
+        await expect(urlText).toEqual(url)
+    }
+
     async switchToWindow(num) {
         browser.switchToWindow((await browser.getWindowHandles())[num - 1])
     }
@@ -103,7 +113,7 @@ export default class Global {
                 Cookie: `session=${session[0].value}`
             }
         }).then(response => {
-            console.log(response.data)
+            // console.log(response.data)
         })
     }
 

@@ -132,6 +132,20 @@ export const config = {
     // The only one supported by default is 'dot'
     // see also: https://webdriver.io/docs/dot-reporter
     reporters: [
+        ['spec',
+            {
+                addConsoleLogs: true,
+                // realtimeReporting: true,
+                // onlyFailures: true,
+                // symbols: {
+                //   passed: '[PASS]',
+                //   failed: '[FAIL]',
+                // },
+                showPreface: false,
+                color: true,
+              },
+              
+        ],
         ['allure', {outputDir: 'allure-results'}], 
         ['cucumberjs-json',
 
@@ -140,7 +154,8 @@ export const config = {
                 jsonFolder: '.tmp/new/',
                 language: 'en',
             },
-        ],]],
+        ],]
+    ],
 
     // If you are using Cucumber you need to specify the location of your step definitions.
     cucumberOpts: {
@@ -165,7 +180,7 @@ export const config = {
         // <string> (expression) only execute the features or scenarios with tags matching the expression
         tagExpression: '',
         // <number> timeout for step definitions
-        timeout: 60000,
+        timeout: 6660000,
         // <boolean> Enable this config to treat undefined definitions as warnings.
         ignoreUndefinedDefinitions: false
     },

@@ -41,7 +41,7 @@ Feature: login to BP
     And I enter password
     And I click on Login button
     # Then I get the session cookie
-    Then I am on Dashboard and verify title and URL
+    Then I am on Dashboard with title Dashboard and URL https://staging-branding.counterpath.com/
 
   @BMP-T196
   Scenario: Temporarly locked out account

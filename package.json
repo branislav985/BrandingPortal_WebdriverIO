@@ -6,9 +6,11 @@
     "@wdio/cli": "^9.0.9",
     "@wdio/cucumber-framework": "^9.0.8",
     "@wdio/local-runner": "^9.0.9",
+    "@wdio/spec-reporter": "^9.9.0",
     "chromedriver": "^104.0.0",
     "wdio-cucumberjs-json-reporter": "^6.0.1",
-    "wdio-intercept-service": "^4.4.1"
+    "wdio-intercept-service": "^4.4.1",
+    "wdio-spec-reporter": "^0.1.5"
   },
   "dependencies": {
     "@avst-api/zephyr-scale-cloud": "^0.3.0",
@@ -27,6 +29,9 @@
     "testQA": "wdio run ./wdio.conf.js",
     "testPROD": "wdio run ./prod.conf.js",
     "allure": "allure generate --clean allure-results && allure open",
-    "test_delete": "del-cli --force allure-results && del-cli --force allure-report"
+    "test_delete": "del-cli --force allure-results && del-cli --force allure-report",
+    "zep": "node zephyrUpload.js",
+    "feature": "wdio run ./wdio.conf.js --spec",
+    "delete": "del-cli --force .tmp"
   }
 }
