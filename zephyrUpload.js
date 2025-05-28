@@ -1,4 +1,4 @@
-import report from './.tmp/json/user-profile_17406737883176074.json' assert {type: 'json'};
+import report from './.tmp/json/user-profile_17430762567612515.json' assert {type: 'json'};
 import axios from 'axios'
 
 
@@ -81,10 +81,10 @@ do {
                 data:
                     executionBody
             }).then((response) => {
-                console.log(response.status)
+                // console.log(response.status)
             });
         } catch (response) {
-            console.log(response.data)
+            // console.log(response.data)
         }
         
     })

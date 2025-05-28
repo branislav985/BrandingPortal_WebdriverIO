@@ -101,3 +101,111 @@ Then(/^Revert back name and lastname to prepare for next execution$/, async() =>
 When(/^Select ony by one, click save and verify message$/, async() => {
     await userProfileP.selectOneByOneTimezoneAndSave()
 })
+
+Given(/^User is on Change password page with title (.*)$/, async (titleText) => {
+    await global.open('auth/login')
+    await global.populateInputField(loginS.EMAIL_INPUT, process.env.user)
+    await global.populateInputField(loginS.PASSWORD_INPUT, process.env.pass)
+    await global.clickOnButton(loginS.LOGIN_BUTTON)
+    await global.clickOnButton(userProfileS.USER_PROFILE)
+    await global.clickOnButton(userProfileS.CHANGE_PASSWORD_BUTTON)
+    await global.elementHasText(userProfileS.USER_PROFILE_TITLE, titleText)
+})
+
+When(/^click on Cancel button$/, async() => {
+    await global.clickOnButton(userProfileS.CHANGE_PASSWORD_CANCEL_BUTTON)
+})
+
+Then(/^user is came back to User profile page with title (.*)$/, async(titleText) => {
+    await global.elementHasText(userProfileS.USER_PROFILE_TITLE, titleText)
+})
+
+When(/^confirm "Old password" input is empty$/, async() => {
+    await global.elementHasText(userProfileS.OLD_PASSWORD_INPUT, '')
+})
+
+When(/^Click "Save changes"$/, async() => {
+    await global.clickOnButton(await userProfileS.BUTTON_SAVE)
+    await browser.pause(500)
+})
+
+Then(/^Alert message is shown below input field - (.*)$/, async(text) => {
+    await global.elementHasText(await userProfileS.OLD_PASSWORD_ERROR_MESSAGE_TEXT, text)
+})
+
+When(/^Enter wrong password - (.*)$/, async(input) => {
+await global.populateInputField(await userProfileS.OLD_PASSWORD_INPUT, input)
+})
+
+When(/^Enter correct old password$/, async() => {
+    await global.populateInputField(userProfileS.OLD_PASSWORD_INPUT, process.env.pass)
+    await browser.pause(500)
+})
+
+Then(/^There is no alert message is shown below input field$/, async() => {
+    await global.confirmElementDoesNotExist(userProfileS.OLD_PASSWORD_ERROR_MESSAGE_TEXT)
+})
+
+When(/^confirm "New password" input is empty$/, async() => {
+    await global.elementHasText(userProfileS.NEW_PASSWORD_INPUT, '')
+})
+
+Then(/^Alert message is shown below New Password input field - (.*)$/, async(text) => {
+    await global.elementHasText(await userProfileS.NEW_PASSWORD_ERROR_MESSAGE_TEXT, text)
+})
+
+When(/^Enter less than 8 characters - (.*)$/, async(pass) => {
+    await global.populateInputField(userProfileS.NEW_PASSWORD_INPUT, pass)
+    await browser.pause(500)
+})
+
+When(/^Enter 8 characters for new password - (.*)$/, async(pass) => {
+    await global.populateInputField(userProfileS.NEW_PASSWORD_INPUT, pass)
+    await browser.pause(500)
+})
+
+When(/^Enter more than 8 characters - (.*)$/, async(pass) => {
+    await global.populateInputField(userProfileS.NEW_PASSWORD_INPUT, pass)
+    await browser.pause(500)
+})
+
+Then(/^There is no alert message is shown below New Password input field$/, async() => {
+    await global.confirmElementDoesNotExist(userProfileS.NEW_PASSWORD_ERROR_MESSAGE_TEXT)
+})
+
+Then(/^Alert message is shown below Confirm New Password input field - (.*)$/, async(text) => {
+    await global.elementHasText(await userProfileS.CONFIRM_NEW_PASSWORD_ERROR_MESSAGE_TEXT, text)
+})
+
+When(/^Enter 8 characters at confirm new password - (.*)$/, async(pass) => {
+    await global.populateInputField(userProfileS.CONFIRM_NEW_PASSWORD_INPUT, pass)
+    await browser.pause(500)
+})
+
+When(/^Enter more than 8 characters at confirm new password - (.*)$/, async(pass) => {
+    await global.populateInputField(userProfileS.CONFIRM_NEW_PASSWORD_INPUT, pass)
+    await browser.pause(500)
+})
+
+When(/^Enter 8 different characters at confirm new password - (.*)$/, async(pass) => {
+    await global.populateInputField(userProfileS.CONFIRM_NEW_PASSWORD_INPUT, pass)
+    await browser.pause(500)
+})
+
+When(/^Enter 8 characters at confirm new password same as new password - (.*)$/, async(pass) => {
+    await global.populateInputField(userProfileS.CONFIRM_NEW_PASSWORD_INPUT, pass)
+    await browser.pause(500)
+})
+
+Then(/^There is no alert message is shown below Confirm New Password input field$/, async() => {
+    await global.confirmElementDoesNotExist(userProfileS.CONFIRM_NEW_PASSWORD_ERROR_MESSAGE_TEXT)
+})
+
+When(/^Enter less than 8 characters for New Password and Confirm new password - (.*)$/, async(pass) => {
+    await global.populateInputField(userProfileS.NEW_PASSWORD_INPUT, pass)
+    await global.populateInputField(userProfileS.CONFIRM_NEW_PASSWORD_INPUT, pass)
+})
+
+Then(/^Verify toast message - (.*)$/, async(text) => {
+
+})

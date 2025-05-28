@@ -21,4 +21,18 @@ export default class UserProfileSeletors {
     BUTTON_SAVE = $('button[type = "submit"]')
     TOAST_MESSAGE = $('#noty_layout__bottomCenter > div > div > p')
     TOAST_MESSAGE_CLOSE_BUTTON = $('.noty_close_button')
+    CHANGE_PASSWORD_BUTTON = $('.action-toolbar > a:nth-child(2)')
+    CHANGE_PASSWORD_CANCEL_BUTTON = $('#cancel')
+    OLD_PASSWORD_INPUT = $('#old_password')
+    OLD_PASSWORD_ERROR_MESSAGE = $('#parsley-id-5')
+    OLD_PASSWORD_ERROR_MESSAGE_TEXT = $('#parsley-id-5 > li')
+    NEW_PASSWORD_INPUT = $('#new_password')
+    NEW_PASSWORD_ERROR_MESSAGE = $('#parsley-id-7')
+    NEW_PASSWORD_ERROR_MESSAGE_TEXT = $('#parsley-id-7 > li')
+    CONFIRM_NEW_PASSWORD_INPUT = $('#new_password_confirm')
+    CONFIRM_NEW_PASSWORD_ERROR_MESSAGE = $('#parsley-id-9')
+    CONFIRM_NEW_PASSWORD_ERROR_MESSAGE_TEXT = $('#parsley-id-9 > li')
+    
+
+
 }
